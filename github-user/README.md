@@ -1,7 +1,9 @@
-# Vue 3 + Vite
+# GitHub User Search
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+### steps to run:
 
-## Recommended IDE Setup
+- clone the repo.
+- cd in code-challenge/github-user
+- add a new Token in "/github-user/src/apollo/index.js 17"
+- run npm run dev
 
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar)
