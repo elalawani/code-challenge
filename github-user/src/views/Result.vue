@@ -3,7 +3,7 @@
     <div class="d-flex m-4 justify-content-center">
       <h1>About GitHub User</h1>
     </div>
-    <bio/>
+    <UserView/>
   </div>
 </template>
 <script>
