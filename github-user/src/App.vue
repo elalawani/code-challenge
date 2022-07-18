@@ -1,31 +1,48 @@
-<script setup>
-// This starter template is using Vue 3 <script setup> SFCs
-// Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
-import HelloWorld from './components/HelloWorld.vue'
+<template>
+  <div class="app">
+    <router-view></router-view>
+  </div>
+  <footer>
+  </footer>
+</template>
+<script>
+import {GIT_HUB_USER} from "./graphql/query.js";
+import {useQuery} from "@vue/apollo-composable";
+import {computed, provide} from "vue";
+
+export default {
+  name: 'App',
+  setup() {
+    const {result, loading, error} = useQuery(GIT_HUB_USER)
+    const repos = computed(() => result.value?.user ?? [])
+    provide('repos', repos);
+    provide('error', error);
+    provide('loading', loading);
+
+    return {
+      repos,
+      loading,
+      error
+    }
+
+  },
+
+}
 </script>
 
-<template>
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
-  </div>
-  <HelloWorld msg="Vite + Vue" />
-</template>
+<style>
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Raleway", sans-serif;
+  font-weight: 400;
+}
 
-<style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
+.app {
+  min-height: 100vh;
+  position: relative;
+  background-color: #f1f1f1;
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
-}
+
 </style>
